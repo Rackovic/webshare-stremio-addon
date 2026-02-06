@@ -20,8 +20,8 @@ const manifest = {
     { name: "meta", types, idPrefixes: ["coffei.webshare:"] },
   ],
   types: ["movie", "series"],
-  name: "Satlink Cinema", // <--- TUTO JE ZMENA NÁZVU
-  description: "Simple webshare.cz search and streaming.",
+  name: "Satlink Cinema", // <--- HLAVNÝ NÁZOV ZMENENÝ TU
+  description: "Sledujte filmy a seriály cez Satlink Cinema.",
   catalogs: [
     {
       id: "direct",
@@ -36,13 +36,13 @@ const manifest = {
     {
       key: "login",
       type: "text",
-      title: "Username",
+      title: "Užívateľské meno (Webshare)",
       required: true,
     },
     {
       key: "password",
       type: "password",
-      title: "Password",
+      title: "Heslo (Webshare)",
       required: true,
     },
   ],
