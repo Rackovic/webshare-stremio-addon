@@ -20,13 +20,15 @@ const manifest = {
     { name: "meta", types, idPrefixes: ["coffei.webshare:"] },
   ],
   types: ["movie", "series"],
-  name: "Satlink Cinema", // <--- HLAVNÝ NÁZOV ZMENENÝ TU
+  name: "Satlink Cinema",
   description: "Sledujte vaše obľúbené filmy a seriály.",
+  // PRIDANÉ LOGO TU:
+  logo: url + "mystatic/logo.png", 
   catalogs: [
     {
       id: "direct",
       type: "movie",
-      name: "Satlink Cinema Filmy", // <--- NÁZOV SEKCIÍ V STREMIO
+      name: "Satlink Cinema Filmy",
       extra: [{ name: "search", isRequired: true }],
     },
   ],
@@ -36,13 +38,13 @@ const manifest = {
     {
       key: "login",
       type: "text",
-      title: "Užívateľské meno",
+      title: "Užívateľské meno (Webshare)",
       required: true,
     },
     {
       key: "password",
       type: "password",
-      title: "Heslo",
+      title: "Heslo (Webshare)",
       required: true,
     },
   ],
@@ -179,6 +181,7 @@ app.use((req, res, next) => {
 
 const sdkPath = path.dirname(require.resolve("stremio-addon-sdk/package.json"));
 app.use("/static", express.static(path.join(sdkPath, "static")));
+// Tu sa mapuje priečinok src/static na /mystatic/
 app.use("/mystatic/", express.static(path.join(__dirname, "static")));
 
 app.use(express.urlencoded({ extended: true }));
