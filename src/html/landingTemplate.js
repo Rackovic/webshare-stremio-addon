@@ -1,17 +1,18 @@
 const STYLESHEET = `
 :root {
-    --primary: #8A5AAB;
-    --primary-hover: #a37bc2;
-    --bg-dark: #0f0f0f;
-    --card-bg: rgba(255, 255, 255, 0.07);
+    --primary: #e50914; /* Kinová červená */
+    --primary-hover: #ff1f1f;
+    --bg-dark: #060606;
+    --card-bg: rgba(15, 15, 15, 0.75);
     --text-main: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.6);
+    --text-dim: rgba(255, 255, 255, 0.7);
     --error: #ff4d4d;
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
     box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body, html {
@@ -19,167 +20,170 @@ body, html {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    font-family: 'Inter', 'Open Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     color: var(--text-main);
     background-color: var(--bg-dark);
-}
-
-html {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at center, rgba(138, 90, 171, 0.15) 0%, rgba(0,0,0,0) 70%);
-    backdrop-filter: blur(5px);
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+        url('https://en.webshare.cz/gfx/bg.jpg') center/cover no-repeat fixed;
     padding: 20px;
 }
 
 #addon {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 24px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    padding: 50px 40px;
+    border-radius: 32px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
     text-align: center;
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 20px;
-    filter: drop-shadow(0 0 15px var(--primary));
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+    position: relative;
 }
 
 .logo img {
     width: 100%;
-    border-radius: 20px;
+    height: 100%;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+    object-fit: cover;
 }
 
 h1 {
-    font-size: 2.2rem;
-    margin: 0;
+    font-size: 2.5rem;
+    margin: 0 0 8px;
     font-weight: 800;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
+    background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .version {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--primary);
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-dim);
-    line-height: 1.5;
-    margin-bottom: 30px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    font-weight: 400;
 }
 
 .separator {
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 25px 0;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 30px 0;
 }
 
-/* Form Styling */
 .form-element {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .label-to-top {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
     color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    padding-left: 4px;
 }
 
-input[type="text"], input[type="password"], input[type="number"], select {
+input[type="text"], input[type="password"], select {
     width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.3);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     font-size: 1rem;
+    outline: none;
 }
 
 input:focus {
-    outline: none;
     border-color: var(--primary);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.15);
 }
 
-/* Buttons */
 .button-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 30px;
+    gap: 15px;
+    margin-top: 35px;
 }
 
 button {
     width: 100%;
-    padding: 14px;
-    border-radius: 12px;
+    padding: 18px;
+    border-radius: 18px;
     border: none;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button[name="install"][value="desktop"] {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 15px rgba(138, 90, 171, 0.3);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
 }
 
 button[name="install"][value="desktop"]:hover {
     background: var(--primary-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(229, 9, 20, 0.5);
 }
 
 button[value="web"] {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: white;
+    border: 1px solid var(--glass-border);
 }
 
 button[value="web"]:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
 .error {
-    background: rgba(255, 77, 77, 0.1);
+    background: rgba(255, 77, 77, 0.15);
     border: 1px solid var(--error);
-    color: var(--error);
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-}
-
-.contact a {
-    color: var(--text-dim);
-    text-decoration: none;
-    font-size: 0.8rem;
-}
-
-.contact a:hover {
-    color: var(--primary);
+    color: white;
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
 ul {
@@ -188,24 +192,40 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
+    margin-bottom: 0;
 }
 
 ul li {
-    background: rgba(255,255,255,0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    background: rgba(229, 9, 20, 0.1);
+    border: 1px solid rgba(229, 9, 20, 0.2);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.contact a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.contact a:hover {
+    opacity: 1;
+    color: var(--primary);
 }
 `;
 
 function landingTemplate(manifest, error, configValues) {
-    const background = "https://en.webshare.cz/gfx/bg.jpg";
     const logo = manifest.logo || "/mystatic/logo.png";
     
     const contactHTML = manifest.contactEmail
         ? `<div class="contact">
-            <a href="mailto:${manifest.contactEmail}">Support: ${manifest.contactEmail}</a>
+            <a href="mailto:${manifest.contactEmail}">Podpora: ${manifest.contactEmail}</a>
         </div>`
         : "";
 
@@ -223,14 +243,7 @@ function landingTemplate(manifest, error, configValues) {
                 optionsHTML += `
                 <div class="form-element">
                     <div class="label-to-top">${elem.title}</div>
-                    <input type="${elem.type}" id="${key}" name="${key}" value="${elem.type !== 'password' ? defaultValue : ''}" placeholder="Enter ${elem.title.toLowerCase()}" ${elem.required ? "required" : ""}/>
-                </div>`;
-            } else if (elem.type === "checkbox") {
-                const isChecked = defaultValue === "checked" || defaultValue === true ? "checked" : "";
-                optionsHTML += `
-                <div class="form-element" style="display:flex; align-items:center; gap:10px;">
-                    <input type="checkbox" id="${key}" name="${key}" ${isChecked}>
-                    <label for="${key}" style="font-size:0.9rem; cursor:pointer;">${elem.title}</label>
+                    <input type="${elem.type}" id="${key}" name="${key}" value="${elem.type !== 'password' ? defaultValue : ''}" placeholder="Zadajte ${elem.title.toLowerCase()}" ${elem.required ? "required" : ""}/>
                 </div>`;
             } else if (elem.type === "select") {
                 let selectOptions = (elem.options || []).map(opt => 
@@ -245,24 +258,26 @@ function landingTemplate(manifest, error, configValues) {
         });
     }
 
-    const errorHTML = error ? `<div class="error">⚠️ Nesprávne údaje. Skúste to znova.</div>` : "";
+    const errorHTML = error ? `<div class="error">❌ Neplatné prihlasovacie údaje</div>` : "";
 
     return `
     <!DOCTYPE html>
-    <html style="background-image: url(${background});">
+    <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${manifest.name} - Stremio Addon</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+        <title>${manifest.name} | Kinový Zážitok</title>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
         <style>${STYLESHEET}</style>
     </head>
     <body>
         <div id="addon">
-            <div class="logo"><img src="${logo}" onerror="this.src='https://stremio-assets.s3.amazonaws.com/addons/default-logo.png'"></div>
-            <h1 class="name">${manifest.name}</h1>
-            <span class="version">Version ${manifest.version || "1.0.0"}</span>
-            <p class="description">${manifest.description || ""}</p>
+            <div class="logo">
+                <img src="${logo}" onerror="this.src='https://stremio-assets.s3.amazonaws.com/addons/default-logo.png'">
+            </div>
+            <h1>${manifest.name}</h1>
+            <span class="version">Verzia ${manifest.version || "1.0.0"}</span>
+            <p class="description">${manifest.description || "Vstúpte do sveta neobmedzenej kinematografie s najlepšou kvalitou obrazu."}</p>
 
             <ul>${stylizedTypes.map((t) => `<li>${t}</li>`).join("")}</ul>
 
@@ -273,8 +288,12 @@ function landingTemplate(manifest, error, configValues) {
             <form id="mainForm" action="/configure" method="POST">
                 ${optionsHTML}
                 <div class="button-container">
-                    <button type="submit" name="install" value="desktop">Install to Stremio</button>
-                    <button type="submit" name="install" value="web" formtarget="_blank">Stremio Web</button>
+                    <button type="submit" name="install" value="desktop">
+                        Inštalovať do Stremio
+                    </button>
+                    <button type="submit" name="install" value="web" formtarget="_blank">
+                        Otvoriť Stremio Web
+                    </button>
                 </div>
             </form>
 
