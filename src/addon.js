@@ -36,13 +36,13 @@ const manifest = {
     {
       key: "login",
       type: "text",
-      title: "login - username or email",
+      title: "Username",
       required: true,
     },
     {
       key: "password",
       type: "password",
-      title: "password",
+      title: "Password",
       required: true,
     },
   ],
