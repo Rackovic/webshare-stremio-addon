@@ -20,8 +20,8 @@ const manifest = {
     { name: "meta", types, idPrefixes: ["coffei.webshare:"] },
   ],
   types: ["movie", "series"],
-  name: "Webshare.cz" + dev,
-  description: "Simple webshare.cz search and streaming.",
+  name: "SatLink CINEMA" + dev,
+  description: "Simple search and streaming.",
   catalogs: [
     {
       id: "direct",
@@ -36,13 +36,13 @@ const manifest = {
     {
       key: "login",
       type: "text",
-      title: "Webshare.cz login - username or email",
+      title: "login - username or email",
       required: true,
     },
     {
       key: "password",
       type: "password",
-      title: "Webshare.cz password",
+      title: "password",
       required: true,
     },
   ],
