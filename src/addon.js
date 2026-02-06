@@ -9,8 +9,8 @@ const landingTemplate = require("./html/landingTemplate");
 const { host, url } = require("./env");
 const dev = process.argv.includes("--dev") == 1 ? "Dev" : "";
 
-// Docs: https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/responses/manifest.md
-types = ["movie", "series"];
+// Manifest definuje, ako sa addon zobrazí v Stremio
+const types = ["movie", "series"];
 const manifest = {
   id: "community.coffei.webshare" + dev,
   version: pkg.version,
@@ -20,13 +20,13 @@ const manifest = {
     { name: "meta", types, idPrefixes: ["coffei.webshare:"] },
   ],
   types: ["movie", "series"],
-  name: "SatLink CINEMA" + dev,
-  description: "Simple search and streaming.",
+  name: "Satlink Cinema", // <--- TUTO JE ZMENA NÁZVU
+  description: "Simple webshare.cz search and streaming.",
   catalogs: [
     {
       id: "direct",
       type: "movie",
-      name: "SatLink CINEMA Files",
+      name: "Satlink Cinema Filmy", // <--- NÁZOV SEKCIÍ V STREMIO
       extra: [{ name: "search", isRequired: true }],
     },
   ],
@@ -165,10 +165,8 @@ builder.defineMetaHandler(async function (args) {
 
 const app = express();
 
-// Add the Stremio router for handling addon endpoints - getRouter converts it to express routers
 app.use(getRouter(builder.getInterface()));
 
-// Add middleware for CORS support
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -179,24 +177,18 @@ app.use((req, res, next) => {
   }
 });
 
-//!!! according to the docs, getRouter should provide landing page, but it doesn't for some reason, so I created a custom landing page routers
-
-// Serve static files from SDK (required for the configuration page)
 const sdkPath = path.dirname(require.resolve("stremio-addon-sdk/package.json"));
 app.use("/static", express.static(path.join(sdkPath, "static")));
 app.use("/mystatic/", express.static(path.join(__dirname, "static")));
 
-// Add middleware to decode FORM requests
 app.use(express.urlencoded({ extended: true }));
 
-// Add root route to serve the landing page
 app.get(["/configure", "/"], (req, res) => {
   const landingHTML = landingTemplate(manifest);
   res.setHeader("content-type", "text/html");
   res.end(landingHTML);
 });
 
-// Finish installation - salt the password and redirect to install/update the plugin
 app.post("/configure", async (req, res) => {
   const { login: userLogin, password: userPassword, install } = req.body;
   let salted;
@@ -226,14 +218,12 @@ app.post("/configure", async (req, res) => {
   }
 });
 
-// Custom getUrl endpoint
 app.get("/getUrl/:ident", async (req, res) => {
   try {
     const ident = req.params.ident;
     const streamUrl = await getUrl(ident, req.query.token);
 
     const now = new Date();
-    // Expires 5 hours from now.
     const expiration = new Date(now.getTime() + 5 * 60 * 60 * 1000);
     res.set("Expires", expiration.toUTCString());
     res.set("Last-Modified", now.toUTCString());
