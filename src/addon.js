@@ -21,7 +21,7 @@ const manifest = {
   ],
   types: ["movie", "series"],
   name: "Satlink Cinema", // <--- HLAVNÝ NÁZOV ZMENENÝ TU
-  description: "Sledujte filmy a seriály cez Satlink Cinema.",
+  description: "Sledujte vaše obľúbené filmy a seriály.",
   catalogs: [
     {
       id: "direct",
@@ -36,13 +36,13 @@ const manifest = {
     {
       key: "login",
       type: "text",
-      title: "Užívateľské meno (Webshare)",
+      title: "Užívateľské meno",
       required: true,
     },
     {
       key: "password",
       type: "password",
-      title: "Heslo (Webshare)",
+      title: "Heslo",
       required: true,
     },
   ],
