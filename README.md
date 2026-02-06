@@ -1,34 +1,47 @@
-# Webshare Stremio Addon
+# 🎬 Satlink Cinema | Stremio Addon
 
-<img src="src/static/logo.png" height="250px"/>
+![Satlink Cinema Logo](https://satlink-cinema-stremio-addon.onrender.com/mystatic/logo.png)
 
-This addon enables streaming movies and series from Webshare.cz.
+[![Status](https://img.shields.io/badge/Version-10.0.1-blue.svg)](https://satlink-cinema-stremio-addon.onrender.com)
+[![Platform](https://img.shields.io/badge/Platform-Stremio-purple.svg)](https://www.stremio.com/)
 
-The main principles are simplicity and low-maintenance. For this reason there is no video catalog
-which would provide high-quality content. This addon works by searching files directly on
-webshare.cz. Note this may and does produce incorrect results, but you can usually quickly find the
-correct streams.
+**Satlink Cinema** je výkonný doplnok pre multimediálne centrum **Stremio**, ktorý umožňuje streamovať obsah priamo z úložiska s dôrazom na rýchlosť a jednoduchosť.
 
-Feel free to open up issues if you find any issues.
+---
 
-## How can I use it?
+## 🚀 Funkcie
+* **Vysoká stabilita:** Postavené na najnovšej verzii 10.0.1.
+* **Priame vyhľadávanie:** Rýchle hľadanie streamov priamo na serveroch Webshare.
+* **Podpora seriálov a filmov:** Plná integrácia s IMDb katalógom Stremia.
+* **Cloud hosting:** Beží 24/7 na platforme Render pre maximálnu dostupnosť.
 
-This addon is submitted to the community addon catalog. To install, just go Addons -> Community and search for `Webshare.cz`.
+---
 
-Alternative is to follow the link https://20317bf4c6c6-webshare-stremio-addon.baby-beamup.club/ and install from there.
+## 🛠️ Inštalácia
 
-You need to have valid Webshare.cz credentials and a premium account.
+### 1. Konfigurácia a prihlásenie
+Pre správne fungovanie musíte použiť svoje prihlasovacie údaje.
+1. Navštívte: [https://satlink-cinema-stremio-addon.onrender.com](https://satlink-cinema-stremio-addon.onrender.com)
+2. Zadajte svoje **Používateľské meno** a **Heslo**.
+3. Kliknite na tlačidlo **Inštalovať do Stremio**.
 
-## Development
+### 2. Požiadavky
+* Aktívny účet (nevyhnutné pre plynulé streamovanie bez limitov).
+* Nainštalovaná aplikácia Stremio (Desktop, Android, iOS alebo Android TV).
 
-Follow the usual steps:
+---
 
-- install dependencies - `npm install`
-- create file `config/keys.js` from template `config/keys.js.sample` and fill in TMDB API key. This
-  is not required but some features might require the API key to be present and working.
-- install the addon in local stremio instance - `npm start -- --install`
+## 👨‍💻 Vývojárska sekcia
 
-See [Stremion Addon SDK](https://github.com/Stremio/stremio-addon-sdk) for more information.
+Ak chcete projekt upravovať alebo spustiť lokálne:
 
-Code is formatted with [Prettier](https://prettier.io/docs/install). Use `npm run format` to format
-the code or `npm run check-formatting` to check for any formatting issues.
+### Inštalácia prostredia
+```bash
+# Klonovanie repozitára
+git clone [https://github.com/vas-profil/satlink-cinema-addon.git](https://github.com/vas-profil/satlink-cinema-addon.git)
+
+# Vstup do priečinka
+cd satlink-cinema-addon
+
+# Inštalácia závislostí
+npm install
