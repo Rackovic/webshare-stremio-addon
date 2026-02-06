@@ -23,7 +23,7 @@ const manifest = {
   name: "Satlink Cinema",
   description: "Sledujte vaše obľúbené filmy a seriály.",
   // PRIDANÉ LOGO TU:
-  logo: url + "mystatic/logo.png", 
+  logo: url + "static/logo.png", 
   catalogs: [
     {
       id: "direct",
