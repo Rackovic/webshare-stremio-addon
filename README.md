@@ -11,7 +11,7 @@
 
 ## 🚀 Funkcie
 * **Vysoká stabilita:** Postavené na najnovšej verzii 10.0.1.
-* **Priame vyhľadávanie:** Rýchle hľadanie streamov priamo na serveroch Webshare.
+* **Priame vyhľadávanie:** Rýchle hľadanie streamov priamo na serveroch.
 * **Podpora seriálov a filmov:** Plná integrácia s IMDb katalógom Stremia.
 * **Cloud hosting:** Beží 24/7 na platforme Render pre maximálnu dostupnosť.
 
