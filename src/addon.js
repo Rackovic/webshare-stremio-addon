@@ -26,7 +26,7 @@ const manifest = {
     {
       id: "direct",
       type: "movie",
-      name: "Webshare Files",
+      name: "SatLink CINEMA Files",
       extra: [{ name: "search", isRequired: true }],
     },
   ],
