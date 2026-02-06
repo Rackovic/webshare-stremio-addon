@@ -131,7 +131,7 @@ const mapToStream = (item, matchScores, token) => {
     SeasonEpisode: item.SeasonEpisode,
     posVotes: item.posVotes,
     // Add a check-mark if we get a strong match based on the parsed filename.
-    name: `Webshare${strongMatch ? " ✅" : ""} ${item.parsedTitle.resolution || ""}`,
+    name: `SatLink CINEMA${strongMatch ? " ✅" : ""} ${item.parsedTitle.resolution || ""}`,
     behaviorHints: {
       bingeGroup:
         "WebshareStremio|" +
